@@ -25,8 +25,8 @@
             options: { responsive: true, scales: { y: { beginAtZero: true } } }
         });
 
-        // Connect to your Python WebSocket Server
-        const ws = new WebSocket('ws://localhost:8765');
+        // Connect to the Python WebSocket server on the current host.
+        const ws = new WebSocket(`ws://${window.location.hostname}:8765`);
 
         ws.onmessage = function(event) {
             const amplitudes = JSON.parse(event.data);
